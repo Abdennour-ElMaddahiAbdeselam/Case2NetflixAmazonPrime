@@ -1,8 +1,7 @@
 pandas
 numpy
-matplotlib.pyplot
+matplotlib
 seaborn
 streamlit
-plotly.express
+plotly
 os
-base64
