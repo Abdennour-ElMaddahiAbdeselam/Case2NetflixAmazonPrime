@@ -35,7 +35,7 @@ st.title("Vergelijking Netflix en Amazon Prime")
 df_netflix, df_amazon = laad_datasets()
 
 st.subheader("Netflix")
-st.dataframe(df_netflix())
+st.dataframe(df_netflix)
 
 st.subheader("Amazon Prime")
-st.dataframe(df_amazon())
+st.dataframe(df_amazon)
