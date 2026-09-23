@@ -30,25 +30,6 @@ def laad_datasets():
     return df_netflix, df_amazon
 
 
-st.title("Vergelijking Netflix en Amazon Prime")
-
-df_netflix, df_amazon = laad_datasets()
-
-st.subheader("Netflix")
-st.dataframe(df_netflix)
-
-st.subheader("Amazon Prime")
-st.dataframe(df_amazon)
-
-# Gebaseerd op Plotly Express-documentatie over staafdiagrammen:
-# https://plotly.com/python-api-reference/generated/plotly.express.bar.html
-figuur = px.bar(
-    telling,
-    x="country",
-    y="aantal",
-    color="type",
-    barmode="group"
-)
 
 # ----------------------------------------------------------
 
