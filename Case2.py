@@ -271,7 +271,7 @@ fig_countries = px.bar(
     title="Top 10 genres in de geselecteerde titels",
     labels={"aantal": "Aantal titels", "genre": "Genre"},
 )
-fig_countries.update_layout(yaxis={"categoryorder": "total ascending"})
+fig_countries.update_layout(yaxis={"countryorder": "total ascending"})
 st.plotly_chart(fig_genres, use_container_width=True)
 
 
