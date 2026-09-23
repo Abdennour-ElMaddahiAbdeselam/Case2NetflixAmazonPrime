@@ -50,7 +50,7 @@ figuur = px.bar(
     barmode="group"
 )
 
-----------------------------------------------------------
+# ----------------------------------------------------------
 
 # Datacleaning met pandas, aangepast aan de kolommen in deze datasets.
 # Gebruikte functies: drop_duplicates, to_datetime, to_numeric en fillna.
