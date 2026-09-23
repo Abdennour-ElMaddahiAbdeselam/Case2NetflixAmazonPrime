@@ -40,18 +40,11 @@ st.dataframe(df_netflix)
 st.subheader("Amazon Prime")
 st.dataframe(df_amazon)
 
-# Gebaseerd op Streamlit-documentatie over interactieve filters:
-# https://docs.streamlit.io/develop/api-reference/widgets/st.multiselect
-platformen = st.multiselect(
-    "Kies platform(en)",
-    options=df_alle_platforms["platform"].unique(),
-    default=df_alle_platforms["platform"].unique()
-)
 # Gebaseerd op Plotly Express-documentatie over staafdiagrammen:
 # https://plotly.com/python-api-reference/generated/plotly.express.bar.html
 figuur = px.bar(
     telling,
-    x="platform",
+    x="country",
     y="aantal",
     color="type",
     barmode="group"
