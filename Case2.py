@@ -261,6 +261,19 @@ fig_genres = px.bar(
 )
 fig_genres.update_layout(yaxis={"categoryorder": "total ascending"})
 st.plotly_chart(fig_genres, use_container_width=True)
+# GENRES
+
+fig_countries = px.bar(
+    top_genres,
+    x="country",
+    y="aantal",
+    orientation="v",
+    title="Top 10 genres in de geselecteerde titels",
+    labels={"aantal": "Aantal titels", "genre": "Genre"},
+)
+fig_countries.update_layout(yaxis={"categoryorder": "total ascending"})
+st.plotly_chart(fig_genres, use_container_width=True)
+
 
 st.dataframe(
     df_filter.sort_values("release_year", ascending=False),
