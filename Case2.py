@@ -288,3 +288,55 @@ st.download_button(
     file_name="netflix_amazon_selectie.csv",
     mime="text/csv",
 )
+
+# -------- Productielanden --------
+st.subheader("Top 10 productielanden")
+
+# Maak een aparte tabel voor landen.
+# Een titel met bijvoorbeeld "United States, India" telt voor beide landen mee.
+landen = df_filter[["country", "platform"]].copy()
+
+landen["country"] = landen["country"].str.split(",")
+landen = landen.explode("country")
+landen["country"] = landen["country"].str.strip()
+
+# Tel het aantal titels per land en platform.
+landen_telling = (
+    landen.groupby(["country", "platform"])
+    .size()
+    .reset_index(name="aantal")
+)
+
+# Bepaal de tien landen met de meeste titels in totaal.
+top_land_namen = (
+    landen_telling.groupby("country")["aantal"]
+    .sum()
+    .sort_values(ascending=False)
+    .head(10)
+    .index
+)
+
+# Houd alleen deze top 10 over.
+top_landen = landen_telling[
+    landen_telling["country"].isin(top_land_namen)
+]
+
+# Maak de grafiek.
+fig_countries = px.bar(
+    top_landen,
+    x="country",
+    y="aantal",
+    color="platform",
+    barmode="group",
+    title="Top 10 productielanden per platform",
+    labels={
+        "country": "Productieland",
+        "aantal": "Aantal titels",
+        "platform": "Platform",
+    },
+    category_orders={"country": list(top_land_namen)},
+)
+
+st.plotly_chart(fig_countries, use_container_width=True)
+
+
